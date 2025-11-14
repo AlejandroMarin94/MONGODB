@@ -164,7 +164,7 @@ db.users.find({
 
 use('Usuarios')
  
-db.Usuarios.insertMany([
+/*db.Usuarios.insertMany([
   {
     nombre: "Carlos Pérez",
     edad: 25,
@@ -355,4 +355,54 @@ db.Usuarios.insertMany([
       { asignatura: "Lengua", puntaje: 84 }
     ]
   }
-])
+])*/
+
+
+/*
+db.Usuarios.find({
+  $and:[
+ {edad: {$lte: 25}},
+ {ciudad: "Madrid"},
+ {intereses: {$elemMatch: {$eq:"deportes"}}},
+ {activo: true},
+ {"direccion.codigoPostal": "28013"}
+
+]
+}
+)
+
+db.Usuarios.find({
+  $or:[
+    {edad: {$lte: 25}},
+    {ciudad: "Madrid"},
+    {intereses: {$elemMatch: {$eq: "deportes"}}},
+    {activo: true},
+    {"direccion.codigoPostal": "280013"}
+    
+  ]
+})
+
+db.Usuarios.find({
+  $and:[
+    {edad:{$gte:20}},
+    {ciudad: "Madrid"},
+  ]
+},
+
+    {nombre:1,
+      ciudad:1,
+      _id:0,
+
+    }
+
+  
+
+  )
+    */
+
+  db.Usuarios.find({
+    $or:[
+      {edad: {$eq:40}},
+      {intereses:{$elemMatch: {$eq:"cine"}}}
+    ]
+  })

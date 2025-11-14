@@ -1,22 +1,9 @@
-db.users.find({
-    $and:[
-        {
-            age: {$lte: 25},
-
-        },
-        {
-            city: "Madrid"
-        },
-        {
-            intereses: {$elemMatch: { "deportes"}}
-        },
-        /*
-        {
-            status: {$eq "activo"}
-        }
-        {
-            direccion: { $elemMatch{cp:}}
-        }
-
+db.Usuarios.find({
+    $and: [
+        {edad: {$lte:25}},
+        {ciudad: "Madrid"},
+        {intereses: {$elemMatch: {$eq: "deportes"}}},
+        {activo: true},
+        {"direccion.codigoPostal": "28013"}
     ]
-})
+});
