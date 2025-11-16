@@ -160,7 +160,7 @@ db.moviles.updateOne(
 )
 */
 
-
+/*
 db.moviles.updateOne(
     {"modelo": "Galaxy S22"},
     {$set: {"coloresDisponibles": ["Verde", "Naranja", "Rosa"]}}
@@ -170,6 +170,8 @@ db.moviles.find(
     {"modelo": "Galaxy S22"},
 )
 
+*/
+
 
 
 
@@ -178,40 +180,148 @@ db.moviles.find(
 // Asegura que el modelo "Pixel 7" tenga el color "Negro" en coloresDisponibles
 // sin permitir duplicados.
 
+/*
+db.moviles.updateOne(
+    {"modelo": "Pixel 7"},
+    {$addToSet: {"coloresDisponibles": "Negro"}}
+)
+    
+
+db.moviles.find(
+    {"modelo": "Pixel 7"},
+);
+*/
+
 // Ejercicio 11:
 // Quita el color "Burdeos" del array coloresDisponibles del modelo "Edge 30 Pro".
+/*
+db.moviles.update(
+    {"modelo": "Edge 30 Pro"},
+    {$pull:{"coloresDisponibles": "Burdeos"}}
+    
+)
+    
+
+db.moviles.find(
+    {"modelo": "Edge 30 Pro"}
+)
+    */
 
 // Ejercicio 12:
 // Elimina de las opiniones del modelo "10 Pro" todas aquellas con puntuacion menor que 4.6.
 
+/*
+db.moviles.update(
+    {"modelo": "10 Pro"},
+    {$pull:{opiniones:{puntuacion: {$lte: 4.6}}}}
+
+)
+
+db.moviles.find(
+    {"modelo": "10 Pro"}
+)
+    */
 // Ejercicio 13:
 // Elimina la última opinión del modelo "Mi 11".
+/*
+db.moviles.update(
+    {"modelo": "Mi 11"},
+    {$pop: {opiniones: 1}}
+)
+    */
+
+/*
+db.moviles.find(
+    {"modelo": "Mi 11"}
+)
+*/
+
+    
+
 
 // Ejercicio 14:
 // Elimina el primer color del array coloresDisponibles del modelo "P50 Pro".
+
+
+/*
+db.moviles.update(
+    {"modelo": "P50 Pro"},
+    {$pop: {"coloresDisponibles": -1 }}
+
+)
+    */
+   
+
+db.moviles.find(
+    {modelo: "P50 Pro"}
+)
 
 // 2) ÍNDICES
 
 // Ejercicio 15:
 // Crea un índice ascendente sobre el campo "modelo" en la colección moviles.
+/*
+db.moviles.createIndex(
+    {modelo: 1}
+)
+    */
 
 // Ejercicio 16:
 // Crea un índice descendente sobre el campo "precio" en la colección moviles
 // con nombre "idx_precio_desc".
+/*
+db.moviles.createIndex(
+    {precio: -1},
+    {name: "idx_precio_desc"}
+)
+
+   db.moviles.getIndexes()
+   */
 
 // 3) REGEX (Expresiones regulares)
 
 // Ejercicio 17:
 // Busca todos los móviles cuyo modelo empiece por "Mi".
+/*
+db.moviles.find(
+    {modelo: {$regex:  /^Mi/}}
+)
+    */
 
 // Ejercicio 18:
 // Busca todos los móviles cuyo modelo termine en "5".
+/*
+db.moviles.find(
+    {modelo: {$regex: /5$/}}
+)
+    */
+
+
 
 // Ejercicio 19:
 // Busca todos los móviles cuyo modelo contenga la cadena "Phone".
+/*
+db.moviles.find(
+    {modelo: {$regex: /Phone/}}
+)
+
+*/
+
 
 // Ejercicio 20:
 // Busca todos los móviles cuya marca comience por la letra "M".
+/*
+db.moviles.find(
+    {modelo: {$regex:/^M/}}
+)
+*/
+
 
 // Ejercicio 21:
 // Busca todos los móviles cuyo modelo contenga la cadena "Pro" en cualquier posición.
+/*
+db.moviles.find(
+    {modelo: {$regex: /Pro/}}
+)
+*/
+
